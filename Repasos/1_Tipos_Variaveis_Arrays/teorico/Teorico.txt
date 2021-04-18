@@ -1,0 +1,183 @@
+
+JAVA  
+
+TIPOS DE DADOS 
+
+Java é uma linguagem orientada a objetos fortemente tipada, grande parte da 
+segurança da linguagem e robustez se deve a este fato. 
+Cada variável declarada pertence a um tipo de dados.   
+
+
+Tipos Primitivos: 
+
+São definidos no Java oito tipos primitivos de dados: 
+
+Inteiros: que contem byte, short, int e long 
+
+Números de ponto flutuante: float e double que representam números com casas decimais. 
+
+Caracteres: este grupo inclui os char que representam símbolos. 
+
+Booleanos: que representam true e false. 
+
+--------------------------------------------------------------------------------
+
+Inteiros: 
+
+Em algumas linguagens pode ser encontrado o tipo unsigned integer. Em Java não existe esse tipo de dados.  
+
+ 
+Name    Tamanho bits    Range   
+long    64              –9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+int     32              –2,147,483,648 to 2,147,483,647
+short   16              –32,768 to 32,767
+byte    8               –128 to 127
+ 
+
+--------------------------------------------------------------------------------
+Números de Ponto Flutuante 
+
+Números de Ponto Flutuante também conhecidos como números reais,
+são utilizados quando é necessário guardar em um valor casas decimais.  
+
+ 
+Name    Tamanho bits    Range
+double  64              4.9e–324 to 1.8e+308
+float   32              1.4e–045 to 3.4e+038
+
+
+--------------------------------------------------------------------------------
+Caracteres:  
+
+No Java o tipo de dados para guardar um caractere é o char. 
+O tipo de dados char no Java é unicode. 
+Isto faz com que seja possivel representar qualquer caractere 
+ou símbolo em qualquer idioma. Como o unicode requer 16 bit o tipo char é 16-bit. 
+O valores vão de 0 até 65.536.  
+
+ 
+--------------------------------------------------------------------------------
+Booleans:  
+
+Java tem predefinido o tipo boolean para valores lógicos, 
+é possível guardar valores true e false.  
+
+ 
+--------------------------------------------------------------------------------
+VARIÁVEIS   
+
+Em Java as variáveis necessitam ser declaradas antes de serem usadas.
+ A forma básica de declarar uma variável e a seguinte: 
+
+ 
+
+type identifier [ = value ][, identifier [= value ] …];  
+
+
+
+int a, b, c;  
+
+int d = 3, e, f = 5;  
+
+byte z = 22;  
+
+double pi = 3.14159; 
+
+
+--------------------------------------------------------------------------------
+
+Inicialização Dinâmica   
+
+Java também permite inicializar as variáveis dinamicamente.  
+
+class Calculo { 
+
+    public static void main(String args[]) {  
+
+        double a = 3.0, b = 4.0; 
+
+        double c = Math.sqrt(a * a + b * b); 
+
+    }  
+
+} 
+
+
+--------------------------------------------------------------------------------
+
+Escopo e tempo de vida das variáveis  
+
+ 
+
+class Scope { 
+public static void main(String args[]) { 
+
+        int x; 
+
+        x = 10; 
+        
+        if(x == 10) {   
+            int y = 20; 
+            System.out.println("x and y: " + x + " " + y); 
+            x = y * 2; 
+        }  
+    } 
+} 
+
+
+--------------------------------------------------------------------------------
+Conversão de Tipos e Casting 
+
+E comum assignar o valor de um tipo a uma variável de outro tipo. 
+Por exemplo é possível assignar um valor int para uma variável long. 
+De qualquer forma não todos os  tipos são compatíveis.  
+
+ 
+
+A conversão automática no Java necessita de: 
+
+   - Que os dois tipos sejam compatíveis 
+
+   - O tipo de destino necessita ser maior que o de origem. 
+
+--------------------------------------------------------------------------------
+ 
+
+Arrays: 
+
+Em Java os arrays são pertencentes a um tipo e podem ter mais de uma dimensão .
+Um elemento especifico em um array et acessado pelo seu índice.   
+
+ 
+
+Array Unidimensional:
+--------------------
+
+Para criar um array, primeiramente devemos declara uma variavel do tipo desejado: 
+
+type var-name[ ]; 
+ 
+var-name = new type [size]; 
+
+ 
+
+Array Multidimensional  
+----------------------
+
+Em Java a declaração de um array multidimensional e feita declarando array de array.  
+
+int twoD[][] = new int[4][5]; 
+ 
+
+--------------------------------------------------------------------------------
+
+String 
+------
+
+O tipo de dados String em Java não é um tipo primitivo. E não e simplesmente um array de caracteres. 
+Trataremos de este assunto mais adiante. Porém abaixo mostramos como se declara e usa um String em Java.  
+
+
+String str = "this is a test";  
+
+System.out.println(str); 

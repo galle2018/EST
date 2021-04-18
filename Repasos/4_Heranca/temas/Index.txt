@@ -1,0 +1,18 @@
+
+1 - Básico
+2 - Uma variável de superclasse pode referenciar um objeto de uma subclasse.
+3 - Executando o construtor da classe pai super() e override de método
+4 - Abstract classes
+    - Não pode ser instanciada 
+    - Não implementa todo o comportamento desejado
+    - Alguns métodos não sao implementados e apenas definidos
+5 - Intefaces
+    - Uma interface permite abstrair o comportamento de uma classe por inteiro.
+    - Os métodos são apenas declarados.
+    - Não são declaradas variáveis de instância
+    - As classes implementam as interfaces
+    - Uma ou mais classes podem implementar uma interface
+    - Uma classe pode implementar uma ou mais interfaces
+
+
+    
