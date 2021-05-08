@@ -8,28 +8,37 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 
+
 public class Principal {
 
     public static List<Product> database = new ArrayList<Product>();
     private static int id,qty;
+    public static int x;//para arvore
 
     public static void main(String[] args) {
+
         lerCSV();
         menu();
+
     }//fin main
 
     public static void menu(){
+
+        //Arvore arv = new Arvore();
+        Scanner in = new Scanner(System.in);
+
         System.out.println("\nERP_System\n\n"
                 //+ "Piso Atual="+pos_atual+"\nCap Max Elev = "+capacidade_max+"\nCapac Disp Elev = "+capacidade_disp+"\nQuantidade Pisos="+q_pisos+"\nQuant Pess Atual = "+q_pessoas+"\n\n"
                 + "1 - Listar todos os produtos\n"
                 + "2 - Buscar produto por codigo\n"
                 + "3 - Buscar produto por nome\n"
                 + "4 - Retirar produto\n"
-                + "5 - Sair"
+                + "5 - Buscar por produtos em árvore binária\n"
+                + "8 - Sair"
                 + "\n\nDigite sua escolha: ");
 
-        Scanner in = new Scanner(System.in);
         String escolha = in.nextLine();
+
 
         if(escolha.equals("1")) {
             Products.listarProducts();
@@ -60,7 +69,6 @@ public class Principal {
             System.out.println("\nRetiro de stock de produtos" +
                                "\n---------------------------");
 
-
             Scanner scanner = new Scanner(System.in);
             //int id,qty;
             boolean bError = true;
@@ -86,7 +94,31 @@ public class Principal {
             menu();
         }
 
-        else if(escolha.equals("5")){
+        else if(escolha.equals("5")) {//infresar varios
+            ArvoreBinaria.ArvoreBinariaMenu();
+            //menu();
+        }//fim ingresar varios
+
+        else if(escolha.equals("6")) {//exibir
+            Arvore arv = new Arvore();
+            arv.caminhar();
+            menu();
+        }//fim exibir
+
+        else if(escolha.equals("7")) {
+            Arvore arv = new Arvore();
+            Scanner le = new Scanner(System.in);
+            System.out.print("\n Informe o valor (long) -> ");
+            int x = le.nextInt();
+            if( arv.buscar(x) != null )
+                System.out.print("\n Valor Encontrado !!! \n");
+            else
+                System.out.print("\n Valor nao encontrado !!! \n");
+            menu();
+        }//fim buscar
+
+
+        else if(escolha.equals("8")){
             System.out.println("\nAte a proxima...\nObrigado por usar este codigo...");
             System.exit(1);
         }
@@ -98,8 +130,7 @@ public class Principal {
         in.close();
     }//fim menu
 
-
-    //lendo o arquivo csv e add os dados ao array
+    //lendo o arquivo csv e add os dados ao array---------------------------------------------------------------------
     public static void lerCSV(){
         try (
                 Reader reader = Files.newBufferedReader(Paths.get("e:\\csv\\Products.csv"));
@@ -112,7 +143,8 @@ public class Principal {
 
             int count = 0;
 
-            while ((nextRecord = csvReader.readNext()) != null && count < 21) {
+            //while ((nextRecord = csvReader.readNext()) != null && count < 21) {
+            while ((nextRecord = csvReader.readNext()) != null) {
 
                 if (count > 0) {
                     Product p = new Product(nextRecord[0], nextRecord[1], nextRecord[21]);

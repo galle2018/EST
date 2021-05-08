@@ -45,7 +45,6 @@ public class Products {
             System.out.println("Produto com o nome ou parte dele que contenha " + nome + " nao encontrado");
     }//fim buscarnome
 
-
     public static void retirarProduct(int id, int qty) {
         int numberId = id - 1;
 
@@ -69,8 +68,6 @@ public class Products {
                 System.out.println("\t\t\tEliminado com exito!!!");
             }
             System.out.println("\t-----------------------------------------------------------------");
-
-
         }
         else if(Principal.database.get(numberId).getStockList().size()<qty && Principal.database.get(numberId).getStockList().size()>0){
             int control=0;
@@ -121,7 +118,6 @@ public class Products {
                 "\nPor intenta nuevamente!!!");
 
     }//fim retirarProduto(String id,int qty)
-
 
 
 }
