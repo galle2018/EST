@@ -12,12 +12,14 @@ import java.util.*;
 public class Principal {
 
     public static List<Product> database = new ArrayList<Product>();
+    public static int[] codigos;
     private static int id,qty;
     public static int x;//para arvore
 
     public static void main(String[] args) {
 
         lerCSV();
+        codigos();//para busqueda binaria
         menu();
 
     }//fin main
@@ -28,13 +30,13 @@ public class Principal {
         Scanner in = new Scanner(System.in);
 
         System.out.println("\nERP_System\n\n"
-                //+ "Piso Atual="+pos_atual+"\nCap Max Elev = "+capacidade_max+"\nCapac Disp Elev = "+capacidade_disp+"\nQuantidade Pisos="+q_pisos+"\nQuant Pess Atual = "+q_pessoas+"\n\n"
                 + "1 - Listar todos os produtos\n"
                 + "2 - Buscar produto por codigo\n"
                 + "3 - Buscar produto por nome\n"
                 + "4 - Retirar produto\n"
                 + "5 - Buscar por produtos em árvore binária\n"
-                + "8 - Sair"
+                + "6 - Buscar por produtos utilizando busca binária\n"
+                + "7 - Sair"
                 + "\n\nDigite sua escolha: ");
 
         String escolha = in.nextLine();
@@ -94,31 +96,18 @@ public class Principal {
             menu();
         }
 
-        else if(escolha.equals("5")) {//infresar varios
+        else if(escolha.equals("5")) {
             ArvoreBinaria.ArvoreBinariaMenu();
             //menu();
         }//fim ingresar varios
 
-        else if(escolha.equals("6")) {//exibir
-            Arvore arv = new Arvore();
-            arv.caminhar();
+        else if(escolha.equals("6")) {
+            //BusquedaBinaria.rellenar();
+            BusquedaBinaria.buscar();
             menu();
-        }//fim exibir
+        }
 
-        else if(escolha.equals("7")) {
-            Arvore arv = new Arvore();
-            Scanner le = new Scanner(System.in);
-            System.out.print("\n Informe o valor (long) -> ");
-            int x = le.nextInt();
-            if( arv.buscar(x) != null )
-                System.out.print("\n Valor Encontrado !!! \n");
-            else
-                System.out.print("\n Valor nao encontrado !!! \n");
-            menu();
-        }//fim buscar
-
-
-        else if(escolha.equals("8")){
+        else if(escolha.equals("7")){
             System.out.println("\nAte a proxima...\nObrigado por usar este codigo...");
             System.exit(1);
         }
@@ -130,6 +119,8 @@ public class Principal {
         in.close();
     }//fim menu
 
+
+
     //lendo o arquivo csv e add os dados ao array---------------------------------------------------------------------
     public static void lerCSV(){
         try (
@@ -137,7 +128,7 @@ public class Principal {
                 CSVReader csvReader = new CSVReader(reader);
         ) {
             // Reading Records One by One in a String array
-           //List<Product> database = new ArrayList<Product>();
+           //List<Product> database = new ArrayList<P5roduct>();
 
             String[] nextRecord;
 
@@ -176,6 +167,18 @@ public class Principal {
         } catch (IOException | CsvValidationException e) {
             e.printStackTrace();
         }
-    }//fim leerCSV
+    }//fim leerCSV---------------------------------------------------------------------------------
+
+
+
+    public static void codigos(){
+        //criando vector con codigos para aplicar busqueda binaria-----------
+        for (int i = 0; i < Principal.database.size(); i++) {
+        //for (int i = 0; i < 11; i++) {
+            int cont=Integer.parseInt(Principal.database.get(i).getId());
+            BusquedaBinaria.numeros[i]=cont;
+        }
+        //-------------------------------------------------------------------
+    }//fim codigos
 
 }
